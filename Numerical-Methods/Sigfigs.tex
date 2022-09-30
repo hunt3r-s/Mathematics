@@ -1,0 +1,211 @@
+
+\subsection{Significant Digits, Rounding and Chopping}
+
+	
+\begin{definition}
+		\textit{Significant digits}\index{Significant Digits} are digits beginning with the leftmost nonzero digit and ending with the rightmost correct digit
+	
+\end{definition}
+
+	Significant digits are a representation of the number of digits of precision that a measurement has.
+
+	
+\begin{definition}
+		\textit{Normalized Scientific Notation}\index{Normalized Scientific Notation} for the decimal system is given by
+			
+\[
+x = \pm 0.d_{1}d_{2}d_{3}\dots\times 10^{n}
+\]
+		where \(d_{1} \not = 0\)and \(n\) is an integer.
+	
+\end{definition}
+
+	
+\begin{example}
+		The following is in normalized scientific notation for decimals
+			
+\[
+0.12345 \times 10^{5}
+\]
+		The following are not proper representations
+			
+\[
+0.012345 \times 10^{6}
+\]
+			
+\[
+1.2345 \times 10^{4}	
+\]
+	
+\end{example}
+
+	
+\begin{definition}
+		Normalized Scientific Notation for the binary system is given by
+			
+\[
+x = \pm 0.1d_{1}d_{2}d_{3}\dots\times 2^{\pm n}
+\]
+		where \(d_{i} = 0\) or \(d_{i} = 1\) and \(n\) is an integer.
+	
+\end{definition}
+
+	
+\begin{example}
+		The following is in normalized scientific notation for binary
+			
+\[
+0.101 \times 2^{-2}
+\]
+		The following are not proper representations
+			
+\[
+0.0101\times 2^{-1}
+\]
+			
+\[
+1.01\times 2^{-3}
+\]
+		
+\end{example}
+
+	Scientific notation may have other representations, but they are equivalent to the above definitions.
+
+	
+\begin{definition}
+		Suppose \(\alpha\) and \(\beta\) are two numbers where one is an approximation of the other. The error of \(\beta\) as an approximation to \(\alpha\) is \(\alpha - \beta\). The \textit{absolute error}\index{absolute error} is the absolute value \(|\alpha-\beta|\). The \textit{relative error}\index{relative error} of \(\beta\) as an approximation to \(\alpha\) is \(\frac{|\alpha-\beta}{\alpha}\).
+	
+\end{definition}
+
+	The distinction between the two errors is that absolute error allows \(\alpha\) and \(\beta\) to be interchanged while relative error requires one of the values to be specified as correct.
+
+	
+\begin{example}
+		Consider x = 0.00347 rounded to x' = 0.0035 and y = 30.158 rounded to \(0.3\times 10^{-4}\)\\
+		The \(x' = 0.35\times 10^{-2}\) has two significant digits with absolute error of \(0.3\times 10^{-4}\), relative error of \(0.865\times 10^{-2}\) and \(y' = 0.3015\times 10^{2}\) has four significant digits with absolute error of \(0.2\times 10^{-2}\) and relative error of \(0.66\times 10^{-4}\)
+	
+\end{example}
+
+In Python, the following code will return the amount of significant digits in a number
+\inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/sigfigs.py}
+	
+\begin{definition}
+		A number is \textit{chopped}\index{chopped} to n digits if all the digits following the n'th are removed from the end of the number.
+	
+\end{definition}
+
+	
+\begin{example}
+		The following numbers rounded to two decimal places
+			
+\[
+0.217 \approx 0.22,\; 0.475\approx 0.48,\; 0.592\approx 0.59
+\]
+		Chopping them to two significant digits gives
+			
+\[
+0.217 \approx 0.21,\; 0.475\approx 0.47,\; 0.592\approx 0.59
+\]
+	
+\end{example}
+
+Chopping and rounding numbers is very straightforward in Python:
+\inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/chopRound.py}
+
+\begin{example}
+		Where \(n\) denotes the number of significant digits,
+			
+\[
+0.031,\; n = 2
+\]
+			
+\[
+031,\; n = 2
+\]
+			
+\[
+3.1400,\; n = 5
+\]
+			
+\[
+100.,\; n = 3
+\]
+			
+\[
+100.0,\; n = 4
+\]
+			
+\[
+100,\; n = 1
+\]
+			
+\[
+1230,\; n = 3
+\]
+	
+\end{example}
+
+	
+\begin{example}
+		Solve the following linear system by carrying out three significant digits of rounding precision and then four.
+			
+\[
+\systeme*{0.1036x + 0.2122y = 0.7381, 0.2081x + 0.4247y = 0.9327}
+\]
+
+		When solving to 3 significant digits, we begin with the linear system
+			
+\[
+\systeme*{0.104x + 0.212y = 0.738, 0.208x + 0.425y = 0.933}
+\]
+
+		Then we take choose multiple of the first equation such that the coefficient of \(x\) becomes 0. In this case, \(\frac{0.208}{0.104}\)
+			
+\[
+\systeme[x]{0.104x + 0.212y = 0.738, 0.425y - \frac{0.208}{0.104}0.212y = 0.933 - \frac{0.208}{0.104}0.738}
+\]
+		from which we get
+			
+\[
+0.425y - 0.424y = 0.933 - 1.48
+\]
+			
+\[
+0.001y = -0.547
+\]
+			
+\[
+y = -547
+\]
+		With four significant digits we have
+			
+\[
+\systeme*{0.1036x + 0.2122y = 0.7381, 0.2081x + 0.4247y = 0.9327}
+\]
+		Then we choose a multiple of the first equation such that the coefficient of \(x\) becomes 0. In this case, \(\frac{0.2081}{0.1036}\)
+			
+\[
+\systeme[x]{0.1036x + 0.2122y = 0.7381, 0.4247y - \frac{0.2081}{0.1036}0.2122y = 0.9327 - \frac{0.2081}{0.1036}0.7381}
+\]
+		and solving for \(y\) yields
+		from which we get
+			
+\[
+0.4247y - 2.009 \times 0.2122y = 0.9327 - 2.009 \times 0.7381
+\]
+			
+\[
+-0.001600y = -0.5503
+\]
+			
+\[
+y = 343.9
+\]
+	
+\end{example}
+
+	From the above example, we should observe that accurate data should have its calculations carried out to full precision, otherwise the result will be inaccurate.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "NumericalMethodsMain"
+%%% End:

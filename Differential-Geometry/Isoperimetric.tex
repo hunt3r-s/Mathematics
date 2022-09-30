@@ -1,0 +1,33 @@
+
+\subsection{Isoperimetric Inequality}
+We begin this section with recalling a theorem from multivariable calculus, Green's Theorem.
+
+\begin{theorem}
+  Let \(f(x,y)\) and \(g(x,y)\) be smooth functions and let \(\gamma\) be a positively oriented simple closed curve, then
+  \[
+\int_{\text{int}(\gamma)} (\pd{g}{x} - \pd{f}{y})\dif x \dif y = \int_{\gamma} f(x,y)\dif x + g(x,y) \dif y
+\]
+\end{theorem}
+
+\begin{proposition}
+  Let \(\gamma(t) = (x(t),y(t))\) be a positively oriented simple closed curve with period \(T\). Then the area contained by \(\gamma\) is
+  \[
+A(\gamma) = \frac{1}{2} \int^{T}_{0} (xy' -yx')\dif t
+\]
+
+  \begin{proof}
+    let \(f = -\frac{1}{2}y, g = \frac{1}{2}x\). Applying Green's Theorem, we get
+
+    \[
+A(\gamma) = \frac{1}{2} \int_{\gamma} x\dif y - y\dif x
+\]
+  \end{proof}
+\end{proposition}
+
+\begin{theorem}
+  Let \(\gamma\) be a simple clsoed curve, let \(l(\gamma)\) be its length and \(A(\gamma)\) the area contained by it. Then the following inequality holds
+  \[
+A(\gamma) \leq \frac{1}{4\pi} l(\gamma)^{2}
+\]
+\end{theorem}
+

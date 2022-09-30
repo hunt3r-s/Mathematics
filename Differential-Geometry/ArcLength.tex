@@ -1,0 +1,169 @@
+\subsection{Arc-length}
+Recall that for a vector \(v\) in \(\mathbb{R}^{n}\), its magnitude or length is given by
+\[
+    \norm{v} = \sqrt{v_{1}^{2} + \ldots + v_{n}^{2}}
+\]
+If \(u\) is another vector in \(\mathbb{R}^{n}\), the length of the line joining \(u\) and
+\(v\) is given by \(\norm{u-v}\). So for a parametrized curve \(\gamma\), if we take \( \delta t\) to be very small, we get a (nearly) straight line between the points \(\gamma
+(t + \delta t)\) and \(\gamma(t)\). In other words, for very small \(\delta\),
+\[
+    \gamma(t + \delta t) - \gamma(t) = \norm{\gamma(t + \delta t) - \gamma(t)}
+\]
+Furthermore, taking \(\delta\) to be very small, we get
+\[
+    \frac{\gamma(t + \delta t) - \gamma(t)}{\delta t} = \gamma'(t)
+\]
+so the length between the two points is
+\[
+    \gamma(t + \delta t) - \gamma(t) = \norm{\gamma(t + \delta t) - \gamma(t)}
+\]
+\[
+    = \norm{\gamma'(t)}\delta t
+\]
+Integrating over this yields the length of the curve (arclength) for the integration bounds. This idea is defined formally below.
+
+\begin{definition}
+    The \textit{arc-length}\index{Arc-length} of a curve \(\gamma\) starting at the point \(\gamma(t_{0}) \) is given by the function \(s(t) \) defined by
+    \[
+        s(t) = \int_{t_{0}}^{t} \norm{g'(u)} \dif u
+    \]
+\end{definition}
+
+\begin{example}
+    Consider the logarithmic spiral given by
+    \begin{figure}[h]
+        \centering
+        \caption*{\(\gamma(t) = (e^{kt}\cos(t), e^{kt}\sin(t))\)}
+        \begin{tikzpicture}[scale = 0.125, line cap = round,line join = round,> = triangle 45,x = 1cm,y = 1cm]
+            \begin{axis}
+                [
+                    x = 1cm,y = 1cm,
+                    axis lines = middle,
+                    xmin = -12,
+                    xmax = 12,
+                    ymin = -12,
+                    ymax = 12,
+                    xtick = \empty,
+                    ytick = \empty]
+                \clip(-12,-12) rectangle (12,12);
+                \draw[line width = 1.2pt,
+                    smooth,
+                    samples = 100,
+                    domain = 0:25.132741228718345] plot[parametric] function{2.718281828459045**(0.1*t)*cos((t)),2.718281828459045**(0.1*t)*sin((t))};
+            \end{axis}
+        \end{tikzpicture}
+    \end{figure}
+    Where \(k\) is a non-zero constant. We have
+    \[
+        \gamma' = (e^{kt}(k \cos(t) - \sin(t)), e^{kt}(k \sin(t) + \cos(t)))
+    \]
+    and from this we get
+    \[
+        \norm{\gamma}^{2} = e^{2kt}(k \cos(t) - \sin(t))^{2} + e^{2kt}(k \sin(t) \cos(t))^{2} = (k^{2} + 1)e^{2kt}
+    \]
+    We square the magnitude for simplicity of integration. Taking the starting point
+    \[
+        \gamma(0) = (e^{0} \cos(0), e^{0} \sin(0)) = (1, 0)
+    \]
+    for example, we get the arc-length of \(\gamma\) from \(0\) to \(t\) given by
+    \[
+        \int_{0}^{t} \sqrt{k^{2} + 1}e^{ku} \dif u = \frac{\sqrt{k^{2} + 1}}{k}(e^{kt} -1)
+    \]
+\end{example}
+
+\begin{definition}
+    If \(\gamma : (\alpha, \beta) \rightarrow \mathbb{R}^{n}\) is a parametrized curve, the \textit{speed}\index{Speed} at the point \(\gamma(t)\) is given by \(\norm{\gamma'(t)}\). Additionally, \(\gamma\) is said to be a \textit{unit-speed curve}\index{Unit-speed curve} if \(\gamma'(t)\) is a unit vector for all \(t \in (\alpha, \beta)\)
+\end{definition}
+
+Recall the dot product between two vectors
+\[
+    \vec{a} = (a_{1}, a_{2}, \ldots, a_{n}) \text{and} \vec{b} = (b_{1}, b_{2}, \ldots, b_{n})
+\]
+where \(a, b \in \mathbb{R}^{n}\) is given by
+\[
+    \vec{a} \cdot \vec{b} = \sum_{i = 1}^{n} a_{i}b_{i} = a_{1}b_{1} + a_{2}b_{2} + \ldots + a_{n}b_{n}
+\]
+Now, if \(a,b\) are smooth and functions of \(t\), we can apply the `product rule' from calculus to obtain
+\[
+    \od{}{t}(\vec{a} \cdot \vec{b}) = \od{\vec{a}}{t} \cdot \vec{b} + \vec{a} \cdot \od{\vec{b}}{t}
+\]
+
+\begin{proposition}
+    Let \(\vec{n}(t)\) be a unit vector that is a smooth function of parameter \(t\). Then the following dot product satisfies
+    \[
+        \vec{n}'(t) \cdot \vec{n}(t) = 0
+    \]
+    for all \(t\). In other words, \(\vec{n}'(t)\) is perpendicular to \(\vec{n}(t)\) for all \(t\).
+    \begin{proof}
+        By the definition of unit vector,
+        \[
+            \vec{n} \cdot \vec{n} = 1
+        \]
+        Differentiating both sides with respect to \(t\) gives
+        \[
+            \vec{n}' \cdot \vec{n} + \vec{n} \cdot \vec{n}' = 0
+        \]
+        so
+        \[
+            2 \vec{n}' \cdot \vec{n} = 0
+        \]
+        Take \(\vec{n} = \gamma'\) to satisfy the desired equality.
+    \end{proof}
+\end{proposition}
+
+\begin{problem}
+Calculate the arc-length of the catenary
+\begin{figure}[h]
+    \centering
+    \caption*{\(\gamma(t) = t, \cosh(t)\)}
+    \begin{tikzpicture}[scale = 0.25, line cap = round,line join = round,> = triangle 45,x = 1cm,y = 1cm]
+        \begin{axis}
+            [
+                x = 1cm,y = 1cm,
+                axis lines = middle,
+                xmin = -12,
+                xmax = 12,
+                ymin = -12,
+                ymax = 12,
+                xtick = \empty,
+                ytick = \empty]
+            \clip(-12,-12) rectangle (12,12);
+            \draw[line width = 2pt, smooth,samples = 100,domain = 0:6.283185307179586] plot[parametric] function{t,cosh(t)};
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+\end{problem}
+
+\begin{solution}
+    We begin by finding the first derivative and its length
+    \[
+        \gamma'(t) = (1, \sinh(t))
+    \]
+    and the length
+    \[
+        \norm{\gamma'(t)} = \sqrt{1 + \sinh^{2}(t)} = \sqrt{\cosh^{2}(t) = \cosh(t)}
+    \]
+    The arc-length starting at the point \(\gamma(0) = (0, \cosh(0)) = (0, 1)\) is then given by
+    \[
+        s = \int_{0}^{t} \cosh(u) \dif u = \eval{\sinh(u)}_{0}^{t} = \sinh(t)
+    \]
+\end{solution}
+
+\begin{problem}
+Show that the following curve is unit-speed
+\[
+    \gamma(t) = (\frac{1}{3} (1 + t)^{\frac{3}{2}}, \frac{1}{3} (1 - t)^{\frac{3}{2}}, \frac{t}{\sqrt{2}})
+\]
+\end{problem}
+
+\begin{solution}
+    A unit vector is a vector whose magnitude is 1. We must show that \(\gamma'(t)\) is a unit vector for all \(t \in \intoo{-\infty, \infty}\) (since the domain of \(t\) is all real numbers). First we find the first derivative of \(\gamma\) with respect to \(t\)
+    \[
+        \gamma'(t) = (\frac{\sqrt{t + 1}}{2}, -\frac{\sqrt{t - 1}}{2}, \frac{1}{2})
+    \]
+    The magnitude of this vector (that is a smooth function of \(t\)) is given by
+    \[
+        \norm{\gamma'(t)}^{2} = \frac{\sqrt{t + 1}}{2}^{2} + \frac{\sqrt{t - 1}}{2}^{2} + \frac{1}{2}^{2} = \frac{t + 1}{4} + \frac{-t + 1}{4} + \frac{1}{2} = 1
+    \]
+    Thus \(\gamma(t)\) is a unit vector
+\end{solution}

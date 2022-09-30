@@ -1,0 +1,146 @@
+
+\subsection{Space Curves}
+Curves in \(\mathbb{R}^{3}\) or space curves are the main focus of study in this look at
+differential geometry. We will show that the previously introduced idea of
+curvature, together with a new concept, torsion, can determine any space curve up
+to a direct isometry.
+
+Recall that a tangent vector can be expressed as the first derivative of a
+paremtrized curve. Then a unit-tangent vector is simply the tangent vector whose
+magnitude is 1. Using this idea, we have a new definition that will be helpful
+in introducing the concept of torsion.
+
+\begin{definition}
+  Let \(\gamma(s)\) be a unit-speed curve in \(\mathbb{R}^{3}\), and let \(\vec{t} = \gamma'\) be the
+  unit-tangent vector of \(\gamma\). If the curvature is non-zero, we define the
+  \textit{principal normal}\index{Principal normal} of \(\gamma\) at the point \(\gamma(s)\)
+  to be the vector
+  \[
+\vec{n}(s) = \frac{1}{\kappa(s)}\vec{t}'(s)
+\]
+\end{definition}
+
+Observe that since \(\norm{\vec{t}'} = \kappa\), \(\vec{n}\) is a unit vector.
+Furthermore, \(\vec{t} \cdot \vec{t}' = 0\) so \(\vec{n}\) and \(\vec{t}\) are
+perpendicular. This leads to our next definition.
+
+\begin{definition}
+  Let \(\vec{t}\) be a unit-tangent vector of a paremtrized curve \(\gamma\) and let
+  \(\vec{n}\) be its principal norm. Then the vector
+  \[
+\vec{b}(s) = \vec{t}(s) \times \vec{n}(s)
+\]
+  is called the \textit{binormal vector}\index{Binormal vector} of \(\gamma\) at the
+  point \(\gamma(s)\).
+\end{definition}
+
+The set of the unit-tangent vector, the principal norm and the binormal vector
+\(\{\vec{t}, \vec{n}, \vec{b}\}\) form an orthonormal basis of \(\mathbb{R}^{3}\). If we
+apply the vector product rule to the binormal norm, we obtain the equation
+\[
+\vec{b}' = \vec{t}'\times \vec{n} + \vec{t} \times \vec{n}' = \vec{t} \times \vec{n}'
+\]
+Furthermore, by definition,
+\[
+\vec{n}(s) = \frac{1}{\kappa(s)}\vec{t}'(s) \implies \vec{t}'\times \vec{n} = \kappa
+  \vec{n}\times \vec{n} = 0
+\]
+so \(\vec{b}'\) is perpendicular to both \(\vec{b}\) and \(\vec{t}\). Thus it is
+parallel to \(n\). This leads us to our next definition
+
+\begin{definition}
+  Let \(\vec{b}\) be a binormal vector of a parametrized curve \(\gamma\). The
+  \textit{torsion}\index{torsion} of \(\gamma\) at a point \(\gamma(s)\) is given by \(\tau\) where
+  \[
+\vec{b}' = -\tau \vec{n}
+\]
+\end{definition}
+
+Similar to curvature, it is possible to express the torsion of a curve in terms
+of \(\gamma\) itself rather than a unit-speed reparametrization.
+
+\begin{proposition}
+  Let \(\gamma(t)\) be a regular curve in \(\mathbb{R}^{3}\) with non-zero curvature. Then the
+  torsion of \(\gamma\) is given by
+  \[
+\tau = \frac{(\gamma' \times \gamma'')\cdot \gamma'''}{\norm{\gamma' \times \gamma''}^{2}}
+\]
+
+  \begin{proof}
+    Similar to the proof for curvature, this proof is omitted due to lengthy computations.
+  \end{proof}
+\end{proposition}
+
+\begin{proposition}
+  Let \(\gamma\) be a regular curve in \(\mathbb{R}^{3}\) with nowhere vanishing curvature. Then
+  the image of \(\gamma\) is contained in a plane if and only if \(\tau\) is zero at every
+  point of the curve
+
+  \begin{proof}
+    Let \(\gamma\) be unit-speed (reparametrizing does not change torsion). Let \(s\) be
+    the parameter of \(\gamma\). Next, suppose the image of \(\gamma\) is contained by the
+    plane \(\vec{n}\cdot \vec{N} = d\) where \(\vec{N}\) is a constant unit vector and
+    \(\vec{v}\in \mathbb{R}^{3}\). Differentiating \(\gamma\cdot \vec{N} = d\) with respect to \(s\), we have
+    \[
+\vec{t}\cdot \vec{N} = 0 \implies \vec{t}' \cdot \vec{N} = 0 \implies \kappa \vec{n}\cdot \vec{N}
+      = 0
+\]
+    Since \(\vec{t}\) and \(\vec{n}\) are perpendicular to \(\vec{N}\) so \(\vec{b}\) is
+    parallel to \(\vec{N}\) and is a constant vector. So \(\vec{b}' = 0\) so \(\tau =
+    0\).
+    The converse is straightforward.
+  \end{proof}
+\end{proposition}
+
+\begin{theorem}
+  Let \(\gamma\) be a unit-speed curve in \(\mathbb{R}^{3}\) with non-zero curvature. Then the
+  following relations hold
+  \[
+\vec{t}' = \kappa \vec{n}
+\]
+  \[
+\vec{n}' = -\kappa \vec{t} + \tau \vec{b}
+\]
+  \[
+\vec{b} = -\tau \vec{n}
+\]
+  These equations are called the \textit{Frenet-Serret
+    equations}\index{Frenet-Serret equations}
+\end{theorem}
+
+The following result is an immediate consequence of the Frenet-Serret equations
+
+\begin{proposition}
+  Let \(\gamma\) be a unit-speed curve in \(\mathbb{R}^{3}\) with constant curvature and zero
+  torsion. Then \(\gamma\) is a parametrizaiton of a circle.
+  \begin{proof}
+    This immediately follows from the previous proposition which states that any
+    curve with zero torsion contains the image of \(\gamma\) (since a circle has a
+    constant curvature). However, a more instructive proof follows. We
+    previously showed that the binormal vector of a zero torsion curve is
+    constant and \(\gamma\) is contained in a plane perpendicular to \(\vec{b}\). Now
+    \[
+\od{}{s}(\gamma + \frac{1}{\kappa}\vec{n} = \vec{t} + \frac{1}{\kappa}\vec{n}' = 0)
+\]
+    From the Frenet-Serret equation, and the fact that curvature is constant, we
+    have
+    \[
+\vec{n}' = -\kappa \vec{t} + \tau \vec{b} = -\kappa \vec{t}
+\]
+    Then \(\gamma + \frac{1}{\kappa}\vec{n}\) is a constant vector and
+    \[
+\norm{\gamma - \gamma + \frac{1}{\kappa}\vec{n}} = \frac{1}{k}
+\]
+    So \(\gamma\) lies on a sphere \(S\) with center \(\gamma + \frac{1}{\kappa}\vec{n}\) and radius
+    \(\frac{1}{k}\).
+  \end{proof}
+\end{proposition}
+
+\begin{theorem}
+  Let \(\gamma(s)\) and \(\tilde{\gamma}(s)\) be two unit-speed curves in \(\mathbb{R}^{3}\) with the
+  same \(\kappa(s)>0\) and \(\tau\) for all \(s\). Then there is a direct isometry \(M\) of
+  \(\mathbb{R}^{3}\) such that
+  \[
+\tilde{\gamma}(s) = M(\gamma(s))
+\]
+\end{theorem}

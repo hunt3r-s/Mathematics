@@ -1,0 +1,60 @@
+
+\subsection{Homework 2}
+
+\begin{problem}
+  Let \(D\) be the region in \(\mathbb{R}^{2}\) enclosed by the ellipse
+  \[
+\frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1
+\]
+  Denote the ellipse by \(\partial D\) and consider the paremtrization of \(\partial {D}\) given by
+  \[
+c(t) = (a\cos(2t), b\sin(2t))
+\]
+\end{problem}
+
+\begin{solution}
+  The period of \(\gamma\) is \(\pi\)
+\end{solution}
+
+\begin{solution}
+  Using the given parametrization \(c\), we can apply Green's Theorem to find the area of \(D\) given by
+  \[
+A(D) = \frac{1}{2}\int^{\pi}_{0} a\cos(2t)[b\sin(2t)]' - b\sin(2t)[a\cos(2t)]'\dif t = \frac{1}{2}\int^{\pi}_{0} 2ab\cos^{2}(2t) + 2ab\sin^{2}(2t) \dif t
+\]
+  \[
+= \int^{\pi}_{0} ab \dif t = \pi ab
+\]
+\end{solution}
+
+\begin{solution}
+  Consider the parametrization of the ellipse given by \(c(t) = (a\cos(2t), b\sin(2t))\), we previously found the area of this curve is given by \(\pi ab\). Now, observe that the length \(l\) of \(c\) is given by
+  \[
+l = \int^{\pi}_{0}\norm{c'} = \int^{\pi}_{0}\sqrt{a^{2}\sin^{2}(2t)+b^{2}\cos^{2}(2t)}\dif t
+\]
+By the isoperemtric inequality, the length \(l\) satisfies \(l \geq \pi \sqrt{ab}\). Furthermore, the theorem states that equality holds if and only if \(c\) is a circle which happens only if \(a = b\).
+\end{solution}
+
+\begin{problem}
+  Let \(S^{2}\) denote the unit sphere \(x^{2} + y^{2} + z^{2} = 1\) and define the parametrization \(\sigma \colon U\rightarrow \mathbb{R}^{3}\) by
+  \[
+\sigma(\theta, \phi) = (\cos \theta \cos \phi, \cos \theta \sin \phi, \sin \phi)
+\]
+  where
+  \[
+U = \{(\theta,\phi) \in \mathbb{R}^{2} | -\frac{\pi}{2} < \theta < \frac{\pi}{2}, 0 < \phi < 2\pi\} \text{and} C = \{(x,0,z) \in S^{2} | x \geq 0 \}
+\]
+\end{problem}
+
+\begin{solution}
+  Let \((\theta_{0}, \phi_{0}) \in U\). For the curve \(\gamma_{1}(\theta) = \sigma(\theta, \phi_{0})\), the curvature is given by
+  \[
+\kappa_{1} = \norm{\gamma_{1}(\theta)''} = \norm{\sigma(\theta, \phi_{0})''} = \sqrt{\cos^{2}\theta \cos^{2}\phi_{0} + \cos^{2}\theta \sin^{2}\phi_{0} + \sin^{2}\phi}
+\]
+  \[
+= \sqrt{\cos^{2}(\theta_{0}) + \sin^{2}(\phi)} = 1
+\]
+  and the curvature of the curve \(\gamma_{2}(\theta) = \sigma(\theta_{0}, \phi)\) is given by
+  \[
+\kappa_{2} = \norm{\gamma_{2}(\theta)''} = \norm{\sigma(\theta_{0}, \phi)''} = \sqrt{-\cos^{2}\theta_{0}\cos^{2}\phi + -\cos^{2}\theta_{0} \sin^{2}} = \cos\theta_{0}
+\]
+\end{solution}

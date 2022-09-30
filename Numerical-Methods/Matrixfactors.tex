@@ -1,0 +1,251 @@
+\subsection{Matrix Factorization}
+A system of linear equations can be written in matrix form
+\[
+A\vec{x} = \vec{b}
+\]
+
+The main objective is to show that Gaussian Elimination applied to \(A\) yields a factorization of \(A\) into a product of a lower triangular and an upper triangular matrix. Recall that a lower triangular matrix is a matrix whose entries consist of all 1's along the diagonal and 0's in the upper half, an upper triangular matrix has all non-zero entries on or above the main diagonal.
+\begin{example}
+  Consider the system of equations represented in matrix form
+  \[
+  \begin{pmatrix}
+    6 & -2 & 2 & 4\\
+    12 & -8 & 6 & 10\\
+    3 & -13 & 9 & 3\\
+    -6 & 4 & 1 & -18
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_{1}\\
+    x_{2}\\
+    x_{3}\\
+    x_{4}
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    16\\
+    26\\
+    -19\\
+    -34
+  \end{pmatrix}
+  \]
+  After the first step of Gaussian Elimination, we get the system
+  \[
+  \begin{pmatrix}
+    6 & -2 & 2 & 4\\
+    0 & -4 & 2 & 2\\
+    0 & -12 & 8 & 1\\
+    0 & 2 & 3 & -14
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_{1}\\
+    x_{2}\\
+    x_{3}\\
+    x_{4}
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    16\\
+    -6\\
+    -27\\
+    -18
+  \end{pmatrix}
+  \]
+  Notice that this form can be obtained by multiplying \(A\) with a lower triangular matrix \(M_{1}\) as follows,
+  \[
+M_{1} A \vec{x} = M_{1} \vec{b}
+\]
+  where
+  \[
+  M_{1} A =
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    -2 & 1 & 0 & 0\\
+    -\frac{1}{2} & 0 & 1 & 0\\
+    1 & 0 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    6 & -2 & 2 & 4\\
+    12 & -8 & 6 & 10\\
+    3 & -13 & 9 & 3\\
+    -6 & 4 & 1 & -18
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    6 & -2 & 2 & 4\\
+    0 & -4 & 2 & 2\\
+    0 & -12 & 8 & 1\\
+    0 & 2 & 3 & -14
+  \end{pmatrix}
+  \]
+  After performing two more steps of Gaussian elimination, we are left with the system
+  \[
+  M_{3}M_{2}M_{1}A \vec{x} =
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & -2 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & -3 & 1 & 0\\
+    0 & \frac{1}{2} & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    -2 & 1 & 0 & 0\\
+   -\frac{1}{2} & 0 & 1 & 0\\
+   1 & 0 & 0 & 1
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    6 & -2 & 2 & 4\\
+    0 & -4 & 2 & 2\\
+    0 & 0 & 2 & -5\\
+    0 & 0 & 0 & -3
+  \end{pmatrix}
+  = U
+  \]
+  Finally, we can obtain a representation of \(A\) in terms of a lower-diagonal matrix \(L\) and upper diagonal \(U\)
+  \[
+A = M^{-1}U = M_{1}^{-1}M_{2}^{-1}M_{3}^{-1}U = LU
+\]
+  where
+  \[
+L =
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    2 & 1 & 0 & 0\\
+    \frac{1}{2} & 0 & 1 & 0\\
+    -1 & 0 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 3 & 1 & 0\\
+    0 & -\frac{1}{2} & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 2 & 1
+  \end{pmatrix}
+  \]
+\end{example}
+
+\begin{theorem}
+  Let \(A = (a_{ij})\) be an \(n \times n\) matrix, assume the forward elimination phase of the naive Gaussian algorithm is applied to \(A\) without encountering any 0 divisiors. Let the matrix resulting from this forward elimination phase be denoted by \(\tilde{A} = \tilde{a_{ij}}\). If \(L\) is a lower diagonal matrix whose non-zero entries correspond to \(\tilde{a_{ij}}\) and \(U\) is an upper diagonal matrix whose non-zero entries correspond to \(\tilde{a_{ij}}\), then \(A = LU\)
+\end{theorem}
+
+For a symmetrix matrix that has an ordinary \(LU\) factorization, there is another way to factorize the matrix. We can obtain a \(LDL^{T}\) matrix where \(D\) is a diagonal matrix. Notice that for a symmetric matrix
+\[
+LU = A = A^{T} = (LU)^{T} = U^{T}L^{T} = LDL^{T}
+\]
+
+Using Python, one can easily find the \(LDL^{T}\) factorizaiton of a matrix:
+
+\inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/ldlt.py}
+
+\begin{example}
+  To find the \(LDL^{T}\) factorization for the matrix
+  \[
+A =
+  \begin{pmatrix}
+    4 & 3 & 2 & 1\\
+    3 & 3 & 2 & 1\\
+    2 & 2 & 2 & 1\\
+    1 & 1 & 1 & 1
+  \end{pmatrix}
+  \]
+  we first find the \(LU\) factorization which is given by
+  \[
+A = LU =
+    \begin{pmatrix}
+      1 & 0 & 0 & 0\\
+      \frac{3}{4} & 1 & 0 & 0\\
+      \frac{1}{2} & \frac{2}{3} & 1 & 0\\
+      \frac{1}{4} & \frac{1}{3} & \frac{1}{2} & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      4 & 3 & 2 & 1\\
+      0 & \frac{3}{4} & \frac{1}{2} & \frac{1}{4}\\
+      0 & 0 & \frac{2}{3} & \frac{1}{3}\\
+      0 & 0 & 0 & \frac{1}{2}
+    \end{pmatrix}
+    \]
+    Then, we extract the diagonal elements of \(U\) and put them in \(D\) to obtain
+    \[
+U =
+    \begin{pmatrix}
+      4 & 0 & 0 & 0\\
+      0 & \frac{3}{4} & 0 & 0\\
+      0 & 0 & \frac{2}{3} & 0\\
+      0 & 0 & 0 & \frac{1}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & \frac{3}{4} & \frac{1}{2} & \frac{1}{4}\\
+      0 & 1 &\frac{2}{3} & \frac{1}{3} \\
+      0 & 0 & 1 & \frac{1}{2}\\
+      0 & 0 & 0 & 1
+    \end{pmatrix}
+= DL^{T}
+\]
+\end{example}
+When a matrix is symmetric \textit{and} positive definite (a matrix is positive definite if \(\vec{x}^{T}A \vec{x}>0\) for every non zero \(\vec{x}\)), we can further simplify the factorization into a form called the \textit{Cholesky factorization}\index{Cholesky factorization}
+
+\begin{theorem}
+  If A is a real, symmetric positive definite matrix, then it has a unique factorization \(A = LL^{T}\) where \(L\) is lower triangular and has a positive diagonal.
+\end{theorem}
+
+
+\begin{example}
+  The matrix
+  \[ \begin{pmatrix}
+       4 & 3 & 2 & 1\\
+       3 & 3 & 2 & 1\\
+       2 & 2 & 2 & 1\\
+       1 & 1 & 1 & 1
+     \end{pmatrix} \]
+   has a Cholesky factorization of the form
+   \[ A = LDL^{T} = (LD^{\frac{1}{2}})(D^{\frac{1}{2}}L^{T}) = \tilde{L}\tilde{L^{T}} \]
+   where
+   \[ \begin{pmatrix}
+        1 & 0 & 0 & 0\\
+        \frac{3}{4} & 1 & 0 & 0\\
+        \frac{1}{2} & \frac{2}{3} & 1 & 0\\
+        \frac{1}{4} & \frac{1}{3} & \frac{1}{2} & 1
+      \end{pmatrix}
+      \begin{pmatrix}
+        2 & 0 & 0 & 0\\
+        0 & \frac{1}{2}\sqrt{3} & 0 & 0\\
+        0 & 0 & \sqrt{\frac{2}{3}} & 0\\
+        0 & 0 & 0 & \frac{1}{\sqrt{2}}
+      \end{pmatrix} = 
+      \begin{pmatrix}
+        2 & 0 & 0 & 0\\
+        \frac{3}{2} & \frac{1}{2}\sqrt{3} & 0 & 0\\
+        1 & \frac{1}{3}\sqrt{3} & \sqrt{\frac{2}{3}} & 0\\
+        \frac{1}{2} & \frac{1}{6}\sqrt{3} & \frac{1}{2}\sqrt{\frac{2}{3}} & \frac{1}{\sqrt{2}}
+      \end{pmatrix} \]
+  \end{example}
+  
+  \begin{theorem}
+    If a matrix is symmetric and has all positive eigenvalues if and only if it is positive definite.
+    \begin{proof}
+      Let \(A\) be a positive definite matrix. Let zero be an eigenvalue, then there exists an eigenvector \(x\) such that \(Ax = 0.\) But then \(x^{T}Ax = 0\) so \(A\) is not positive definite. Let \(\lambda\) be an eigenvalue such that \(\lambda<0\), then there is a vector \(x\) such that \(Ax = \lambda x\) where \(x^{T}Ax = \lambda\abs{x^{2}}\). But \(\lambda\abs{x^{2}}\) is negative since \(\lambda\) is negative and \(\abs{x^{2}}>0\) so \(A\) is not positive definite. By contradiction, if a matrix is positive definite, it has all positive eigenvalues.\\
+      Let \(A\) be a symmetric matrix with all positve eigenvalues \(\lambda\). Then there exists a matrix factorization such that \(A = QDQ^{T}\) where \(D\) is a diagonal matrix. Then we have
+      \[ x^{T}Ax = x^{T}(Q^{T}DQ)x = (x^{T}Q^{T})D(Qx) = (Qx)^{T}D(Qx) = \sum^{n}_{i=1}\lambda_{i}(q_{i}x_{i}^{2}) > 0\]
+      Thus \(A\) is a positive symmetric matrix.
+    \end{proof}
+  \end{theorem}
+  
+  We can implement this theorem in Python to check if a matrix is symmetric, and then positive definite. If so, it can be factorized in Cholesky form.
+  
+  \inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/spdCheck.py}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "NumericalMethodsMain"
+%%% End:

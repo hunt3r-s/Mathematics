@@ -1,0 +1,182 @@
+\subsection*{Homework 2}
+\begin{problem}
+  Prove that the matrix
+  \(
+\begin{pmatrix}
+    2 & 1\\
+    1 & 2
+  \end{pmatrix}
+\) is symmetric and positive definite.
+\end{problem}
+
+\begin{solution}
+  Let \(A =
+\begin{pmatrix}
+    2 & 1\\
+    1 & 2
+  \end{pmatrix}
+\). By swapping the rows and columns of \(A\), we obtain
+  \[
+A =
+\begin{pmatrix}
+    2 & 1\\
+    1 & 2
+  \end{pmatrix}
+= A^{t}.
+\]
+  Since the transpose of \(A\) is \(A\), it is a symmetric matrix. Now, observe that subtracting \(\lambda\) from the diagonals of \(A\), the eigenvalues are given by \(\lambda_{1} = 3\) and \(\lambda_{2} = 1\). Since \(A\) is symmetric and has all positive eigenvalues, \(A\) is a positive definite matrix.
+\end{solution}
+
+\begin{problem}
+
+\end{problem}
+  Find the Cholesky factorization of
+  \(A =
+\begin{pmatrix}
+    2 & 1\\
+    1 & 2
+  \end{pmatrix}
+\).
+\begin{solution}
+  Consider the lower diagonal matrix given by
+  \[
+L =
+  \begin{pmatrix}
+    \sqrt{2} & 0\\
+    \frac{1}{\sqrt{2}} & \sqrt{\frac{3}{2}}
+  \end{pmatrix}
+,
+\]
+  whose diagonal is positive and whose transpose is given by
+  \[
+L^{T} =
+  \begin{pmatrix}
+   \sqrt{2} & \frac{1}{\sqrt{2}}\\
+   0 & \sqrt{\frac{3}{2}}
+  \end{pmatrix}
+.
+\]
+  We have
+  \[
+LL^{T} =
+  \begin{pmatrix}
+    \sqrt{2} & 0\\
+    \frac{1}{\sqrt{2}} & \sqrt{\frac{3}{2}}
+  \end{pmatrix}
+  \begin{pmatrix}
+   \sqrt{2} & \frac{1}{\sqrt{2}}\\
+   0 & \sqrt{\frac{3}{2}}
+  \end{pmatrix}
+=
+  \begin{pmatrix}
+    2 & 1\\
+    1 & 2
+  \end{pmatrix}
+=
+  A,
+\]
+  which is in the form of a Cholesky factorization. This can also be solved in Python:
+  \inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/cholesky.py}
+\end{solution}
+
+\begin{problem}
+  For the matrix
+  \[
+A =
+  \begin{pmatrix}
+   -1 & 1 & 0\\
+   -4 & 3 & 0\\
+   1 & 0 & 2
+  \end{pmatrix}
+,
+\]
+  find all the eigenvalues and their corresponding eigenspaces. Additionally, find the algebraic and geometric multiplicity of each eigenvalue.
+\end{problem}
+
+\begin{solution}
+  We begin by finding the eigenvalues. Seeking the characteristic polynomial, we compute \(A-\lambda I\). Now,
+  \[
+A-\lambda I =
+\begin{pmatrix}
+   -\lambda -1 & 1 & 0\\
+   -4 & 3-\lambda & 0\\
+   1 & 0 & 2
+  \end{pmatrix}
+\]
+  Now we need to find \(\lambda\) such that \(\det(A-\lambda I) = \vec{0}\),
+  \[
+\det(A - \lambda I) = (0)(-1)^{4}
+  \begin{vmatrix}
+    -4 & 3-\lambda\\
+    1 & 0
+  \end{vmatrix}
++
+  0(-1)^{5}
+  \begin{vmatrix}
+    -\lambda-1 & 1\\
+    1 & 0
+  \end{vmatrix}
+  + (2-\lambda)(-1)^{6}
+  \begin{vmatrix}
+    -\lambda-1 & 1\\
+    -4 & 3-\lambda
+  \end{vmatrix}
+\]
+  \[
+= (2-\lambda)
+  \begin{vmatrix}
+    -\lambda-1 & 1\\
+    -4 & 3-\lambda
+  \end{vmatrix}
+=
+  (-\lambda-1)(3-\lambda)-1(-4) = \lambda^{2} - 2\lambda + 1 = -(\lambda-2)(\lambda-1)^{2}.
+\]
+  The roots of the characteristic polynomial yield the eigenvalues for \(A\) so \(\lambda_{1} = 2, \lambda_{2} = 1\). The term \((\lambda-1)^{2}\) indicates that the eigenvalue \(\lambda_{2}\) has an algebraic multiplicity of 2, by similar argument, \(\lambda_{1}\) has an algebraic multiplicity of 1. Substituting our eigenvalues into \(A-\lambda I\), we get
+  \[
+A-2I =
+  \begin{pmatrix}
+    -3 & 1 & 0\\
+    -4 & 1 & 0\\
+    1 & 0 & 0
+  \end{pmatrix}
+,
+\]
+  which has a null space of
+  \(
+\begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+\)
+  and for the eigenvalue 1,
+  \[
+A-1I =
+  \begin{pmatrix}
+    -2 & 1 & 0\\
+    -4 & 2 & 0\\
+    1 & 0 & 1
+  \end{pmatrix}
+,
+\]
+  which has a null space of
+   \(
+\begin{pmatrix}
+    -1\\
+    -2\\
+    1
+  \end{pmatrix}
+\). Since these vectors consist of the null space of \(A-\lambda I\), these are the eigenvectors of their associated eigenvalues. Since both null spaces are 1-dimensional, the geometric multiplicity of both \(\lambda_{1}\) and \(\lambda_{2}\) is 1.
+
+  This can be done in Python with the following:
+
+  \inputminted[frame = lines, bgcolor = lightgray, linenos]{python}{PythonSources/eigenvals.py}
+
+\end{solution}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "NumericalMethodsMain"
+%%% End:

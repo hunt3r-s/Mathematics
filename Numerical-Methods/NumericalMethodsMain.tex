@@ -1,0 +1,99 @@
+%%% Tex-command-extra-options: "-shell-escape"
+%%% TeX-master: t
+%%% End:
+
+
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsrefs, amssymb, amsthm, amsxtra, commath, fancyhdr, mathrsfs, systeme, wasysym}
+\usepackage{minted}
+\usepackage{caption, pgfplots}
+\usepackage{setspace}
+\onehalfspacing
+\pgfplotsset{compat = 1.15}
+\usepackage{imakeidx}
+\usepackage{hyperref}
+\usetikzlibrary{arrows}
+\hypersetup{pdftitle = {Numerical Methods Notes}, pdfpagemode=FullScreen, linktoc=all, colorlinks=true}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{solution}{Solution}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}{Corollary}[definition]
+\newtheorem{lemma}{Lemma}[theorem]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\makeindex[columns = 2, title = Definitions, intoc, columnseprule]
+\renewcommand{\subsubsectionmark}[1]{\markright{\thesubsubsection\ #1}}
+\setminted{fontfamily="Fira Code"}
+\pagestyle{fancy}
+\title{Numerical Methods Notes}
+\fancyhf{}
+\fancyhead{}
+\fancyhead[L]{\scshape\leftmark}
+\let\oldsubsection\subsection
+\makeatletter
+\def\subsection{%
+\@ifstar{\@Starred}{\@nonStarred}%
+}
+\def\@Starred{%
+\@ifnextchar[%
+{\GenericWarning{}{Warning: A starred section can not have parameters. I am going to ignore them!}\@StarredWith}%
+{\@StarredWithout}%
+}      
+\def\@StarredWith[#1]#2{%
+\oldsubsection*{#2}%
+\renewcommand\leftmark{#1}%
+}
+\def\@StarredWithout#1{
+\oldsubsection*{#1}%
+\renewcommand\leftmark{#1}
+}
+\def\@nonStarred{%
+\@ifnextchar[%
+{\@nonStarredWith}%
+{\@nonStarredWithout}%
+}
+\def\@nonStarredWith[#1]#2{%
+\oldsubsection[#1]{#2}%
+\renewcommand\leftmark{#1}%
+}
+\def\@nonStarredWithout#1{%
+\oldsubsection{#1}%
+\renewcommand\leftmark{#1}%
+}
+\makeatother
+\fancyhead[R]{\thepage}
+\date{}
+\author{Hunter Smith}
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \newpage
+
+    \section{Introduction}
+        \input{Sigfigs}
+        \input{Floats}
+
+    \section{Systems of Linear Equations}
+    	\input{Matrixfactors}
+
+    \section{Homework}
+    \input{HW1}
+    \input{HW2}
+
+    \printindex
+\end{document}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

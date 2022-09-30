@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{math}
+\PYG{k}{def} \PYG{n+nf}{Round}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{roundVal}\PYG{p}{):}
+    \PYG{k}{return} \PYG{n+nb}{round}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{roundVal}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{Chop}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{chopVal}\PYG{p}{):}
+    \PYG{n}{decimals} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{)[}\PYG{l+m+mi}{1}\PYG{p}{])}
+    \PYG{k}{if} \PYG{n}{decimals} \PYG{o}{\PYGZlt{}=} \PYG{n}{chopVal}\PYG{p}{:}
+        \PYG{k}{return} \PYG{n}{n}
+    \PYG{n}{step} \PYG{o}{=} \PYG{l+m+mf}{10.0} \PYG{o}{**} \PYG{n}{chopVal}
+    \PYG{k}{return} \PYG{n}{math}\PYG{o}{.}\PYG{n}{trunc}\PYG{p}{(}\PYG{n}{step} \PYG{o}{*} \PYG{n}{n}\PYG{p}{)} \PYG{o}{/} \PYG{n}{step}
+\end{Verbatim}

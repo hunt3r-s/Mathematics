@@ -1,0 +1,184 @@
+\subsection{Reparametrization}
+	This section seeks to expand on the relationship between different possible parametrizations of a level curve.
+
+
+\begin{definition}
+		A parametrized curve \(\tilde{\gamma} \colon \intoo{\tilde{\alpha}, \tilde{\beta}} \rightarrow \mathbb{R}^{n}\) is a \textit{reparametrization}\index{Reparametrization} of a parametrized curve \(\gamma \colon \intoo{\alpha, \beta} \rightarrow \mathbb{R}^{n}\) if there is a smooth bijective map
+
+\[
+\phi : \intoo{\tilde{\alpha}, \tilde{\beta}} \rightarrow \intoo{\alpha, \beta}
+\]
+		known as the \textit{reparametrization map}\index{Reparametrization map} such that the inverse map
+
+\[
+\phi^{-1} \colon \intoo{\alpha, \beta} \rightarrow \intoo{\tilde{\alpha}, \tilde{\beta}}
+\]
+		is also a smooth function and
+
+\[
+\tilde{\gamma}(\tilde{t}) = \gamma(\phi(\tilde{t}) \; \forall \tilde{t} \in \intoo{\tilde{\alpha}, \tilde{\beta}}
+\]
+
+\end{definition}
+
+
+\begin{example}
+		We previously found that the circle \(x^{2} + y^{2} = 1\) has a parametrization
+
+\[
+\gamma(t) = (\cos(t), \sin(t))
+\]
+		Another valid parametrization of the circle is
+
+\[
+\tilde{\gamma}(t) = (\sin(t), \cos(t))
+\]
+		In order to show that \(\tilde{\gamma}\) is a valid reparametrizaiton of \(\gamma\), we must find a reparemtrization map such that
+
+\[
+(\cos(\phi(t)), \sin(\phi(t))) = (\sin(t), \cos(t))
+\]
+		Let \(\phi(t) = \frac{\pi}{2} - t\). Then we get the following
+
+\[
+(\cos(\phi(t)) = \cos(\frac{\pi}{2} - t) = \sin(t), \; \sin(\phi(t)) = \sin(\frac{\pi}{2} - t) = \cos(t)
+\]
+
+\end{example}
+
+
+\begin{definition}
+		A point \(\gamma(t)\) of a parametrized curve \(\gamma\) is called a \textit{regular point}\index{Regular point} if
+
+\[
+\gamma'(t) \not = \vec{0}
+\]
+		Otherwise (if \(\gamma(t)\) is not a regular point), we call \(\gamma(t)\) a \textit{singular point}\index{Singular point} of \(\gamma\).
+		A curve is regular if all of the points on the curve are regular.
+
+\end{definition}
+
+
+\begin{proposition}
+		Any reparametrization of a regular curve is regular
+
+
+\begin{proof}
+			Suppose \(\gamma\) is a regular curve and \(\tilde{\gamma}\) is a reparametrization of \(\gamma\). Let
+
+\[
+t = \phi(\tilde{t}) \text{and} \psi = \phi^{-1}
+\]
+			Now, differentiate both sides of \(\phi(\psi(t)) = t\) results in the following
+
+\[
+\od{\phi}{\tilde{t}} \od{\psi}{t} = 1
+\]
+			Now, since \(\tilde{\gamma}(\tilde{t}) = \gamma(\phi(\tilde{t})\), we can differentiate this to obtain
+
+\[
+\od{\tilde{\gamma}}{\tilde{t}} = \od{\gamma}{t} \od{\phi}{\tilde{t}}
+\]
+			From previous two differentiated equations, we can conclude that
+
+\[
+\od{\tilde{\gamma}}{\tilde{t}} \not = 0, \; \od{\phi}{\tilde{t}} \not = 0
+\]
+			This satisfies the definition of a regular curve.
+
+\end{proof}
+
+\end{proposition}
+
+
+\begin{proposition}
+		If \(\gamma(t)\) is a regular curve, its arc-length \(s\) starting at any point of \(\gamma\) is a smooth function of \(t\).
+
+\begin{proof}
+			Recall that by previous result, \(s\) is a differentiable function of \(t\) and
+
+\[
+\od{s}{t} = \norm{\gamma'(t)}
+\]
+			For simplicity, we will assume that \(\gamma\) is a plane curve of the form
+
+\[
+\gamma(t) = (u(t), v(t))
+\]
+			Where \(u\) and \(v\) are smooth functions of \(t\). Then we have
+
+\[
+\od{s}{t} = \sqrt{u'^{2} + v^{2}}
+\]
+			Now, observe that \(f(x) = \sqrt{x}\) is a smooth function on \(\intoo{0, \infty}\). Furthermore, by induction,
+
+\[
+\od[n]{f}{x} = (-1)^{n-1} \frac{(1)3(5)...(2n - 1)}{2^{n}} x^{\frac{-(2n + 1)}{2}}
+\]
+			Furthermore, since \(u\) and \(v\) are smooth on \(\intoo{0, \infty}\) so are \(u'\) and \(v'\) and an elementary composition of smooth functions is smooth so the function
+
+\[
+\sqrt{u'^{2} + v'^{2}}
+\]
+			is a smooth function. Then, we have enough information to conclude that
+
+\[
+\od{s}{t} = f(u'^{2} + v'^{2})
+\]
+			is a smooth function of \(t\) so \(s\) is smooth.
+
+\end{proof}
+
+\end{proposition}
+
+
+\begin{proposition}
+		A parametrized curve has a unit-speed reparametrization if and only if it is a regular curve.
+    \end{proposition}
+
+    \begin{corollary}
+      Let \(\gamma\) be a regular curve and \(\tilde{\gamma}\) a unit-speed reparametrization
+      of \(\gamma\)
+      \[
+\tilde{\gamma}(u(t)) = \gamma(t)
+\]
+      where \(u\) is a smooth function of \(t\). Then, if \(s\) is the arc-length of
+      \(\gamma\), we have
+      \[
+u = \pm s + c
+\]
+      where c is a constant
+    \end{corollary}
+
+    \begin{example}
+      This example shows that although a unit-speed reparametrization is always
+      possible, it is not always convenient. Consider the logarithmic spiral
+      \[
+\gamma(t) = (e^{kt}\cos(t), e^{kt}\sin(t))
+\]
+      Seeking a unit-speed paremtrization, we have
+      \[
+\gamma'(t) = (-e^{kt}\sin(t) + ke^{kt}\cos(t), e^{kt}\cos(t) + ke^{kt}\sin(t))
+\]
+      and
+      \[
+\norm{\gamma'(t)}^{2} = e^{2kt}\sin^{2}(t) + k^{2}e^{2kt}\cos^{2}(t) +
+        e^{2kt}\cos^{2}(t) + k^{2}e^{2kt}\sin^{2}(t) = (k^{2} + 1)e^{2kt}
+\]
+      so the arc-length starting from 0 is given by
+      \[
+s = \int^{t}_{0} \sqrt{k^{2}+1}e^{ku}\dif u = \frac{1}{k}\sqrt{k^{2} + 1}e^{kt}-1
+\]
+      then
+      \[
+t(s) = \frac{1}{k}\ln(\frac{ks}{\sqrt{k^{2}+1}}+1)
+\]
+      which gives us the ugly unit-speed reparemtrization of
+      \[
+\tilde{\gamma(s)} =
+        ((\frac{ks}{\sqrt{k^{2}+1}}+1)\cos(\frac{1}{k}\ln(\frac{ks}{\sqrt{k^{2}+1}}+1)),
+        (\frac{ks}{\sqrt{k^{2}+1}}+1)\sin(\frac{1}{k}\ln(\frac{ks}{\sqrt{k^{2}+1}}+1)))
+\]
+    \end{example}
+
+

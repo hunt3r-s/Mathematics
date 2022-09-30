@@ -1,0 +1,53 @@
+
+\subsection{Curvature}
+
+\begin{definition}
+  Let \(\gamma\) be a unit-speed curve with parameter \(t\), the
+  \textit{curvature}\index{Curvature} of \(\gamma\) at point \(\gamma(t)\) is given by
+  \[
+\kappa(t) = \norm{\gamma''(t)}
+\]
+\end{definition}
+
+\begin{example}
+  Consdier the circle with center \((x_{0},y_{0})\) and radius \(r\). A unit-speed
+  parametrization is given by
+  \[
+\gamma(t) = (x_{0} + r\cos \frac{t}{r}, y_{0} + r\sin \frac{t}{r})
+\]
+  and \(\gamma\) is unit speed since
+  \[
+\norm{\gamma'(t)} = \sqrt{(-\sin^{2}\frac{t}{r})^{2} + (\cos \frac{t}{r})^{2}
+} = 1
+\]
+  Then the curvature of a circle is given by
+  \[
+\kappa(t) = \norm{\gamma''(t)} = \sqrt{(-\frac{1}{r}\cos\frac{t}{r})^{2} + (-\frac{1}{r}\sin \frac{t}{r})^{2}}
+      = \frac{1}{r}
+\]
+  Intuitively, this makes sense since the curvature is the reciprocal of the
+  radius, this means small circles should have large curvature and large circles
+  should have small curvature as expected.
+\end{example}
+
+As dicsovered previously, every curve has a unit-speed reparemtrization but it
+is not always convenient or possible to express it in terms of elementary
+functions. The following proposition gives a way to express curvature in terms of
+\(\gamma\) itself instead of a unit-speed reparametrization of it.
+
+\begin{proposition}
+  Let \(\gamma(t)\) be a regular curve in \(\mathbb{R}^{3}\). Then its curvature is given by
+  \[
+\kappa = \frac{\norm{\gamma'' \times \gamma'}}{\norm{\gamma'}^{3}}
+\]
+  where \(\times\) denotes the cross product.
+
+  \begin{proof}
+    The proof of this proposition is computationally intensive so is omitted.
+    The basic idea is to consider a unit-speed parameter \(s\) of \(\gamma\). Then apply
+    the chain rule to \(\gamma\) and plug it into the unit-speed curvature formula and
+    perform some more differentiating and vector products to obtain \(\kappa\) in terms
+    of just \(\gamma\) and its derivatives.
+  \end{proof}
+\end{proposition}
+

@@ -1,0 +1,41 @@
+
+\subsection{Floating Point Representation}
+	A note must be made about the limits of computing large values. The following definition gives limits to the size of values that computers can handle precisely.
+
+	
+\begin{definition}
+		The \textit{maximum} and \textit{minimum}\index{Floating-Point Limit Values} value for single-precision floating point values are given by
+			
+\[
+\max(\text{singleFloat}) = 3.4\times 10^{38}
+\]
+			
+\[
+\min(\text{singleFloat}) = 1.2\times 10^{-38}
+\]
+
+		The maximum and minimum value for double-precision floating point values are given by
+			
+\[
+\max(\text{singleFloat}) = 1.8\times 10^{308}
+\]
+			
+\[
+\min(\text{singleFloat}) = 2.2\times 10^{-308}
+\]
+	
+\end{definition}
+
+	
+\begin{example}
+		Using double-precision floating point values, the first example causes an underflow
+			
+\[
+1 + 1\times 10^{-308} = 1 + 0 = 1
+\]
+			
+\[
+1 + 3\times 10^{-308} \not = 1
+\]
+	
+\end{example}

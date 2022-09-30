@@ -1,0 +1,46 @@
+
+\subsection{Simple Closed Curves}
+
+\begin{definition}
+  Let \(\gamma \colon \intoo{\alpha, \beta} \rightarrow \mathbb{R}^{2}\) be a curve. We say \(\gamma\) is a \textit{closed curve}\index{Closed curve} if \(\gamma(\alpha) = \gamma(\beta)\), i.e., the start and endpoints are the same, creating an enclosed area.
+\end{definition}
+
+\begin{definition}
+  Let \(\gamma(t)\) be a parametrized curve described by \(x(t), y(t)\). The curve \(\gamma\) has a \textit{self intersection}\index{Self intersection} if there is a point \(x,y\) such that \(x(w) = x(t) = x\) and \(y(w) = y(t) = y\) where \(w \not = t\)
+\end{definition}
+
+\begin{definition}
+  A \textit{simple closed curve}\index{Simple closed curve} in \(\mathbb{R}^{2}\) is a closed curve that has no self-intersections
+\end{definition}
+
+The Jordan Curve Theorem gives the result that any simple closed curve has an interior and an exterior that describe the complement of the image of \(
+\gamma\) by
+
+\begin{enumerate}
+\item
+  \(\text{int}(\gamma)\) is bounded
+\item
+  \(\text{ext}(\gamma)\) is unbounded
+\item
+  The regions \(\text{int}(\gamma)\) and \(\text{ext}(\gamma)\) are connected, i.e., any two points in one of the respective regions can be joined by a curve that is contained by the region. However, a curve joining a point from the two regions must cross the curve \(\gamma\).
+\end{enumerate}
+
+\begin{example}
+  The curve \(\gamma(t) = (p\cos(t), q\sin(t))\) is a simple closed curve. The interior of \(\gamma\) is given by
+  \[
+\text{int}(\gamma) = \{(x,y)\in \mathbb{R}^{2} | \frac{x^{2}}{p^{2}} + \frac{y^{2}}{q^{2}} < 1 \}
+\]
+  and the exterior is given by
+  \[
+\text{ext}(\gamma) = \{(x,y)\in \mathbb{R}^{2} | \frac{x^{2}}{p^{2}} + \frac{y^{2}}{q^{2}} > 1 \}
+\]
+\end{example}
+
+For a simple closed curve, we can use the interior and exterior to distinguish two orientations of \(\gamma\). We say a curve \(\gamma\) is \textit{positively oriented}\index{Positive orientation} if the signed unit-normal vector points towards the interior of the curve.
+
+\begin{theorem}
+  The total signed curvature of a simple closed curve in \(\mathbb{R}^{2}\) is \(\pm2\pi\).
+  \begin{proof}
+    The proof is omitted, it is beyond the scope of this course
+  \end{proof}
+\end{theorem}

@@ -1,0 +1,197 @@
+\subsection{Parameterized Curves}
+
+
+\begin{definition}
+		A \textit{parameterized curve}\index{Parametrized curve} in \(\mathbb{R}^{n}\) is a differentiable map
+            \[
+\gamma \colon \intoo{\alpha, \beta} \rightarrow \mathbb{R}^{n}
+\]
+		of an open interval \(\intoo{\alpha, \beta} = \{t \in \mathbb{R} \mid \alpha < t < \beta \}\) onto \(\mathbb{R}^{n}\) where \(-\infty \leq \alpha < \beta \leq \infty\)
+
+\end{definition}
+
+	The above definition means that \(\gamma\) is a correspondence from each \(t \in \intoo{\alpha, \beta}\) to a point \(\gamma(t) = ((\gamma_{1}(t), \gamma_{2}(t), \ldots, \gamma_{n}(t)) \in \mathbb{R}^{n}\) such that each function \(\gamma_{1}(t), \gamma_{2}(t), \ldots, \gamma_{n}(t)\) is differentiable.
+
+
+\begin{definition}
+		A \textit{level curve}\index{Level curve} is a parametrized curve in \(\mathbb{R}^{3}\) such that it can be defined by the pair of equations
+
+\[
+f_{1}(x, y, z) = c_{1}, \text{and} f_{2}(x, y, z) = c_{2}
+\]
+		In other words, a level curve is the set of all points in the domain of \(f\) that reach a certain value \(c\).
+
+\end{definition}
+
+
+\begin{example}
+		Consider the function \(y = x^{2}\), we seek to find a parametrization \(\gamma(t)\) of the function. That means the parametrization must satisfy \(\gamma_{2}(t) = \gamma_{1}(t)^{2}\) for all \(t \in (\alpha, \beta)\) where \(\gamma\) is defined.
+		An obvious solution to the equation \(\gamma_{2}(t) = \gamma_{1}(t)^{2}\) is \(\gamma_{1}(t) = t, \gamma_{2}(t) = t^{2}\). Since the \(x\) coordinate of \(\gamma(t)\) is just \(t\), and \(x\) can take on any value in a parabola, we know that the domain of the parametrized curve is all real numbers. Using this observation and our solution to \(\gamma_{2}(t) = \gamma_{1}(t)^{2}\), we obtain
+
+\[
+\gamma \colon \intoo{-\infty, \infty} \rightarrow \mathbb{R}^{2}, \;\; \gamma(t) = (t,t^{2})
+\]
+
+\begin{remark}
+			The equation \(\gamma(t) = (2t, 4t^{2})\) is also a valid parametrization, as are infinitely many other pairs of coordinates that satisfy the equation.
+
+\end{remark}
+
+\end{example}
+
+
+\begin{example}
+		Now consider the circle \(x^{2} + y^{2} = 1\). An obvious solution to the equation
+
+\[
+\gamma_{1}(t)^{2} + \gamma_{2}(t)^{2} = 1
+\]
+		is
+
+\[
+\gamma_{1}(t) = \cos^{2}(t), \gamma_{2} = \sin^{2}(t)
+\]
+		since
+
+\[
+\gamma_{1}(t)^{2} + \gamma_{2}(t)^{2} = 1
+\]
+, for all values of \(t\), the domain of \(\gamma\) will be all real numbers. Thus, we get the curve
+
+\[
+\gamma \colon \intoo{-\infty, \infty} \rightarrow \mathbb{R}^{2}, \;\; \gamma(t) = (\cos^{2}(t), \sin^{2}(t))
+\]
+
+\begin{remark}
+			Taking \(x = t\) instead of \(x = \cos^{2}(t)\) would have yielded the parametrization of \(\gamma(t) = (t, \sqrt{1 - t^{2}})\) after solving for \(y\). Although this works for the positive solutions to \(x^{2} + y^{2} = 1\), this does not cover the negative part of the circle.
+
+\end{remark}
+
+\end{example}
+
+
+\begin{example}
+		Consider the parametrized curve
+
+\[
+\gamma(t) = (\cos^{3}(t), \sin^{3}(t)), \;\; t \in \mathbb{R}
+\]
+		Since for all values of \(t\),
+
+\[
+\cos^{2}(t) + \sin^{2}(t) = 1
+\]
+, the coordinates \(x = \cos^{3}(t), y = \sin^{3}(t)\) of \(\gamma(t)\) satisfy
+
+\[
+x^{\frac{2}{3}} + y^{\frac{2}{3}} = 1
+\]
+		(since \(x^{\frac{2}{3}} + y^{\frac{2}{3}} = \cos^{3}(t)^{\frac{2}{3}} + \sin^{3}(t)^{\frac{2}{3}} = \cos^{2}(t) + \sin^{2}(t) = 1\). Thus, \(x^{\frac{2}{3}} + y^{\frac{2}{3}} = 1\) is a level curve that coincides with the image of \(\gamma\)
+
+\end{example}
+
+
+\begin{definition}
+		Let \(f\) be a function, \(f\) is called a \textit{smooth function}\index{Smooth function} up to order \(n\) if the derivatives of \(f\) up to order \(n\) are continuous. For the purposes of this material, all functions will be assumed to be smooth for all \(n\)
+
+\end{definition}
+
+
+\begin{definition}
+		Let \(\gamma\) be a parametrized curve. The derivative of order 1, \(\gamma'(t)\), is called the \textit{tangent vector}\index{Tangent vector} of \(\gamma\)
+
+\end{definition}
+
+
+\begin{theorem}
+		Let \(\gamma\) be a parametrized curve. If the tangent vector of \(\gamma\) is constant, then the image of the curve is a straight line.
+
+\begin{proof}
+			Let \(\gamma\) be a parametrized curve with a constant tangent vector. That is, \(\forall t, \gamma'(t) = \vec{a}\) where \(\vec{a}\) is a constant vector. Then by component-wise integration, we have
+
+\[
+\gamma(t) = \int\gamma'(t) \dif t = \int\od{\gamma}{t} \dif t = \vec{a} \dif t = t\vec{a} + \vec{b}
+\]
+			where \(\vec{b}\) is a constant vector. This corresponds to the parametric equation for a straight line passing through point \(\vec{b}\).
+
+\end{proof}
+
+\end{theorem}
+
+
+\begin{problem}
+		Is \(\gamma(t) = (t^{2}, t^{4})\) a parametrization of \(y = x^{2}\)?
+
+\end{problem}
+
+
+\begin{solution}
+		\(\gamma(t) = (t^{2}, t^{4})\) is only a valid parametrization of the positive \(x\) side of \(y = x^{2}\) since
+
+\[
+\gamma(t) = (t^{2}, t^{4}) \implies x = t^{2}, y = t^{4}
+\]
+		and
+
+\[
+y = t^{4} = (t^{2})^{2} = x^{2}
+\]
+		which satisfies the equation.
+
+\end{solution}
+
+
+\begin{problem}
+		Find a parametrization of the level curve \(y^{2} - x^{2} = 1\).
+
+\end{problem}
+
+
+\begin{solution}
+		We need to find a
+
+\[
+\gamma \colon \intoo{\alpha,\beta} \rightarrow \mathbb{R}^{2}
+\]
+		such that \(\gamma(t)\) satisfies the equation for every \(t \in \intoo{\alpha, \beta}\). First try \(x = t\), we get
+
+\[
+y^{2} - x^{2} = 1 \implies x = \pm\sqrt{-1 + y^{2}}
+\]
+		which is inconvenient for parametrizing. Now observe that
+
+\[
+\sec^{2}(t) - \tan^{2}(t) = 1
+\]
+. So let
+
+\[
+\gamma(t) = (\sec(t), \tan(t))
+\]
+. The possible values of \(t\) is then restricted to
+
+\[
+t \in (\frac{-\pi}{2}, \frac{\pi}{2}) \cup (\frac{\pi}{2}, \frac{3\pi}{2})
+\]
+.
+
+\end{solution}
+
+
+\begin{problem}
+		Find the Cartesian equation of the parametrization
+
+\[
+\gamma(t) = (\cos^{2}(t), \sin^{2}(t)
+\]
+		We can rewrite the function \(\gamma(t)\) as
+
+\[
+\sin^{2}(t) = a\cos^{2}(t) + \phi(t)
+\]
+
+\[
+= y = ax + \phi(t)
+\]
+		Observe that \(\sin^{2} + \cos^{2} = 1 \implies \sin^{2} = 1 - \cos^{2} = -\cos^{2} + 1\). Thus \(a = -1, \phi(t) = 1\) and we get the equation \(y = -x + 1\)
+    \end{problem}

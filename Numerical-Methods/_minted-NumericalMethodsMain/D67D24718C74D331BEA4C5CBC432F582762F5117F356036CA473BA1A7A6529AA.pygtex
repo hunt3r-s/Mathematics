@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}LDL\PYGZca{}T Factorization of a matrix}
+\PYG{k+kn}{from} \PYG{n+nn}{scipy.linalg} \PYG{k+kn}{import} \PYG{n}{ldl}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+
+\PYG{k}{def} \PYG{n+nf}{llTranspose}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+    \PYG{n}{lu}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{perm} \PYG{o}{=} \PYG{n}{ldl}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{lower}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{k}{return}\PYG{p}{(}\PYG{n}{lu}\PYG{p}{,} \PYG{n}{d}\PYG{p}{,} \PYG{n}{lu}\PYG{o}{.}\PYG{n}{T}\PYG{p}{)}
+\end{Verbatim}

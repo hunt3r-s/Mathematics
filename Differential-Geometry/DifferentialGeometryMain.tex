@@ -1,0 +1,104 @@
+%%% Tex-command-extra-options: "-shell-escape"
+%%% TeX-master: t
+%%% End:
+
+
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsrefs, amssymb, amsthm, amsxtra, commath, fancyhdr, mathrsfs, minted, systeme, wasysym}
+\usepackage{caption, pgfplots}
+\usepackage{setspace}
+\onehalfspacing
+\pgfplotsset{compat = 1.15}
+\usepackage{imakeidx}
+\usepackage{hyperref}
+\usetikzlibrary{arrows}
+\hypersetup{pdftitle = {Numerical Methods Notes}, pdfpagemode=FullScreen, linktoc=all, colorlinks=true}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{solution}{Solution}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}{Corollary}[definition]
+\newtheorem{lemma}{Lemma}[theorem]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\makeindex[columns = 2, title = Definitions, intoc, columnseprule]
+\renewcommand{\subsubsectionmark}[1]{\markright{\thesubsubsection\ #1}}
+
+\pagestyle{fancy}
+\title{Differential Geometry Notes}
+\fancyhf{}
+\fancyhead{}
+\fancyhead[L]{\scshape\leftmark}
+\let\oldsubsection\subsection
+\makeatletter
+\def\subsection{%
+\@ifstar{\@Starred}{\@nonStarred}%
+}
+\def\@Starred{%
+\@ifnextchar[%
+{\GenericWarning{}{Warning: A starred section can not have parameters. I am going to ignore them!}\@StarredWith}%
+{\@StarredWithout}%
+}      
+\def\@StarredWith[#1]#2{%
+\oldsubsection*{#2}%
+\renewcommand\leftmark{#1}%
+}
+\def\@StarredWithout#1{
+\oldsubsection*{#1}%
+\renewcommand\leftmark{#1}
+}
+\def\@nonStarred{%
+\@ifnextchar[%
+{\@nonStarredWith}%
+{\@nonStarredWithout}%
+}
+\def\@nonStarredWith[#1]#2{%
+\oldsubsection[#1]{#2}%
+\renewcommand\leftmark{#1}%
+}
+\def\@nonStarredWithout#1{%
+\oldsubsection{#1}%
+\renewcommand\leftmark{#1}%
+}
+\makeatother
+\fancyhead[R]{\thepage}
+\date{}
+\author{Hunter Smith}
+
+\begin{document}
+  \maketitle
+  \tableofcontents
+  \newpage
+
+  \section{Curves in Planes and Space}
+      \input{ParametrizedCurves}
+      \input{ArcLength}
+      \input{Reparametrization}
+
+  \section{Curvature and Torsion}
+      \input{Curvature}
+      \input{SpaceCurves}
+
+  \section{Global Properties of Curves}
+      \input{SimpleClosedCurves}
+      \input{Isoperimetric}
+
+  \section{Surfaces in $\mathbb{R}^3$}
+      \input{SurfaceParam}
+
+  \section{Homework}
+      \input{Homework1}
+      \input{Homework2}
+
+  \printindex
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

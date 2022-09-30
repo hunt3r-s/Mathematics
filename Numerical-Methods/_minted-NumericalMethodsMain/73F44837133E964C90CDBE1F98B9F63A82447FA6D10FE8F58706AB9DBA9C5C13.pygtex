@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+
+\PYG{c+c1}{\PYGZsh{} Return true if matrix is symmetric}
+\PYG{k}{def} \PYG{n+nf}{symmetricCheck}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{A}\PYG{o}{==}\PYG{n}{A}\PYG{o}{.}\PYG{n}{T}\PYG{p}{)}\PYG{o}{.}\PYG{n}{all}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} Return true if all eigenvals are positive}
+\PYG{k}{def} \PYG{n+nf}{isSymmetricPositiveDefinite}\PYG{p}{(}\PYG{n}{A}\PYG{p}{):}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{symmetricCheck}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)):}
+        \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{all}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{linalg}\PYG{o}{.}\PYG{n}{eigvals}\PYG{p}{(}\PYG{n}{A}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
+\end{Verbatim}

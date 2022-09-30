@@ -1,0 +1,52 @@
+
+\subsection{Surface Parametrization}
+
+Recall from analysis the concept of an open set. A subset \(U\) of \(\mathbb{R}^{n}\) is called open if
+\[
+a\in U, \norm{u - a} < \epsilon \implies u\in U
+\]
+Furthermore, a function \(f\) is said to be continuous if
+\[
+u\in X, \norm{u - a}<\delta \implies \norm{f(u)-f(a)}<\epsilon
+\]
+Using the definition of an open set to express a continuous function, we have that \(f\) is continuous if and only if for every open set \(V\in \mathbb{R}^{n}\), there is an open set \(U\in \mathbb{R}^{n}\) such that \(U \cap X = \{x\in X| f(x) \in V\}\).
+
+\begin{definition}
+  Let \(f \colon X \rightarrow Y\) be a continuous, bijective function. The function \(f\) is called a \textit{homeomorphism}\index{Homeomorphism} if the inverse map \(f^{-1} \colon Y \rightarrow X\) is also continuous. Furthermore, \(X\) and \(Y\) are said to be \textit{homeomorphic}\index{Homeomorphic}
+\end{definition}
+
+Using the above definitions, we now have the information needed to construct a definition for a surface in \(\mathbb{R}^{3}\) and a way to describe the concept of a parametrization in \(\mathbb{R}^{3}\).
+
+\begin{definition}
+  Let \(S \subseteq \mathbb{R}^{3}\). If every point \(p\in S\) has open sets \(U\in \mathbb{R}^{2}\) and \(W\in \mathbb{R}^{3}\) containing \(p\) such that \(S\cap W\) is homemorphic to \(U\), then \(S\) is a \textit{surface}\index{Surface}. A homeomorphism \(\sigma \colon U \rightarrow S\cap W\) is called a \textit{surface patch}\index{Surface patch} or \textit{surface parametrization}\index{Surface parametrization} of the open subset \(S\cap W\subseteq S\). A set of surface patches whose images cover \(S\) is called a \textit{atlas}\index{Atlas} of \(S\).
+\end{definition}
+
+\begin{example}
+  Consider the unit cylinder given by
+  \[
+S = \{(x, y, z)\in \mathbb{R}^{3}| x^{2} + y^{2} = 1\}
+\]
+  which has a parametrization given by
+  \[
+\sigma(u, v) = (\cos u, \sin u, v)
+\]
+  Here, \(\sigma\) is continuous but not injective (so not bijective) since \(\sigma(u,v) = (u + 2\pi, v)\) for all \((u, v)\).
+  Restricting the interval of \(u\) such that \(0\leq u\leq 2\pi\) yields an injective map. However, even when we restrict \(\sigma\) to this subset of \(\mathbb{R}^{2}\)
+  \[
+V = \{(u, v)\in \mathbb{R}^{2}| 0 \leq u < 2\pi\}
+\]
+  we do not have a homeomorphism because \(V\) is not an \textit{open} subset of \(\mathbb{R}^{2}\)
+\end{example}
+
+\begin{example}
+  Consider the unit sphere denoted by
+  \[
+S^{2} = \{(x, y, z)\in \mathbb{R}^{3} | x^{2} + y^{2} + z^{2} = 1\}
+\]
+  A common way to parametrize the sphere is with a latitude \(\theta\) and a longitude \(\phi\) where
+  \[
+\sigma(\theta, \phi) = (\cos \theta \cos \phi, \cos \theta \sin \phi, \sin \theta)
+\]
+  This is known as the \textit{latitude-longitude parametrization}\index{Latitude-longitude parametrization} of \(S^{2}\).
+  Like the cylinder, \(\sigma\) is not an injective map since \(\sigma (\theta, \phi) = \sigma(\theta, \phi + 2\pi)\).
+\end{example}

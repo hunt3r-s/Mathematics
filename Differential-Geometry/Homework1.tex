@@ -1,0 +1,84 @@
+\subsection{homework}
+  \begin{problem}
+    Consider the circular helix
+    \[
+\gamma(t) = (at, b \sin t, b \cos t)
+\]
+    where \(a, b\) are non-zero constants
+  \end{problem}
+  \begin{solution}
+  \item[(a.)]
+
+    To find the arc length, we first differentiate \(\gamma\) with respect to \(t\).
+    \[
+\gamma'(t) = (a, b \cos t, -b \sin t)
+\]
+    Next, we must find the magnitude of \(\gamma'(t)\).
+    \[
+\norm{(a, b \cos t, -b \sin t)} = \sqrt{t^{2} + b^{2} \cos^{2} t +
+        b^{2} \sin^{2} t} = \sqrt{a^{2} + b^{2}}
+\]
+    Finally, we integrate the magnitude from \(0\) to
+    \(t\) to obtain our arc length.
+    \[
+s = \int^{t}_{0} \sqrt{a^{2} + b^{2}} \dif u = \sqrt{b^{2}+a^{2}}t
+\]
+
+  \item[(b.)]
+    For all \(t\), \(\gamma'(t) = (a, b \cos t, -b \sin t) \not = \vec{0}\), so \(\gamma\) is
+    a regular curve. Thus \(\gamma\) has a unit-speed reparametrization. By taking the
+    inverse of \(s(t)\),
+    \[
+s(t) = \sqrt{a^{2}+b^{2}}t \implies t(s) = t(s) = \frac{s}{\sqrt{a^{2}+b^{2}}}
+\]
+    the unit-speed paremtrization is then given by
+    \[
+c(s) = \gamma(t(s)) = (\frac{as}{a^{2}+b^{2}}, b\sin(\frac{s}{a^{2}+b^{2}}, b\cos(\frac{s}{a^{2}+b^{2}})))
+\]
+
+  \item[(c.)]
+    The following calculations are needed
+    \[
+\gamma'(t(s)) = (a, b \cos \frac{s}{a^{2}+b^{2}}, -b \sin \frac{s}{a^{2}+b^{2}})
+\]
+    \[
+\gamma''(t(s)) = (0, -b \sin \frac{s}{a^{2}+b^{2}}, -b \cos \frac{s}{a^{2}+b^{2}})
+\]
+    \[
+\gamma'''(t(s)) = (0, -b \cos \frac{s}{a^{2}+b^{2}}, b \sin \frac{s}{a^{2}+b^{2}})
+\]
+    \[
+\gamma'\times\gamma'' = (ab\sin t, -ab\cos t, b^{2})
+\]
+    \[
+\norm{\gamma'\times\gamma''} = \sqrt{a^{2}b^{2}(\sin^{2} \frac{s}{a^{2}+b^{2}} +
+        \cos^{2} \frac{s}{a^{2}+b^{2}}) + b^{4}} = b\sqrt{a^{2}+b^{2}}
+\]
+    \[
+(\gamma'\times\gamma'') \dot \gamma''' =
+      ab^{2}\sin^{2}\frac{s}{a^{2}+b^{2}}+ab^{2}\cos^{2}\frac{s}{a^{2}+b^{2}} = ab^{2}
+\]
+    \[
+\vec{T}(s) = (\frac{a}{\sqrt{a^{2}+b^{2}}},
+      \frac{b\cos(\frac{s}{a^{2}+b^{2}})}{\sqrt{a^{2}+b^{2}}}, \frac{-b\sin(\frac{s}{a^{2}+b^{2}})}{\sqrt{a^{2}+b^{2}}})
+\]
+    \[
+\vec{B}(s) = \frac{(a, b \cos \frac{s}{a^{2}+b^{2}}, -b \sin \frac{s}{a^{2}+b^{2}}) \times (0, -b\sin(\frac{s}{a^{2}+b^{2}}), -b\cos(\frac{s}{a^{2}+b^{2}}))}{\norm{(a, b \cos \frac{s}{a^{2}+b^{2}}, -b \sin \frac{s}{a^{2}+b^{2}}) \times (0, -b\sin(\frac{s}{a^{2}+b^{2}}), -b\cos(\frac{s}{a^{2}+b^{2}}))}}
+\]
+    \[
+\kappa = \frac{\norm{(\gamma'\times\gamma'')}}{\norm{\gamma}^{3}} = \frac{b}{b^{2}+a^{2}}
+\]
+    \[
+\tau = \frac{(\gamma'\times\gamma'') . \gamma'''}{\norm{\gamma'\times\gamma''}^{2}} = \frac{ab^{2}}{b^{2}(a^{2}+b^{2})}
+\]
+  \item[(d.)]
+    Let \(a = \frac{3}{3^{2}+(-4)^{2}}, b = \frac{-4}{3^{2}+4^{2}}\) then every
+    curve of constant curvature 3 and torsion -4 can be obtained by isometry to
+    the helix given by the unit speed curve of
+\[
+\gamma(t) = (at, b \sin t, b \cos t)
+\]
+    This is true because any curves with the same torsion and curvature have a
+    direct isometry by theorem 2.3.6.
+  \end{solution}
+
